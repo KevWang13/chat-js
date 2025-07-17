@@ -44,7 +44,11 @@ io.on("connection", socket => {
 
     if (filter.isProfane(message)) {
       return callback("Profanity is not allowed!");
-    } else {
+    }
+    else if (message.includes("http")) {
+      return callback("links are not allowed");
+    }
+    else {
       io.to(user.room).emit("message", generateMessage(user.username, message));
       callback();
     }
