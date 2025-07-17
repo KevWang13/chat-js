@@ -57,7 +57,7 @@ io.on("connection", socket => {
 
   socket.on("sendLocation", (coords, callback) => {
     const user = getUser(socket.id);
-    if (coords.latitude >= 22.5 && coords.latitude <= 23.0) {
+    if (coords.latitude >= 0 && coords.latitude <= 100) {
       console.log("🚨 User is in the special area!");
     }
 
