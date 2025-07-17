@@ -50,6 +50,7 @@ io.on("connection", socket => {
     }
     else {
       io.to(user.room).emit("message", generateMessage(user.username, message));
+      console.log("message sent!")
       callback();
     }
   });
@@ -61,6 +62,8 @@ io.on("connection", socket => {
     }
 
     io.to(user.room).emit("locationMessage", generateLocationMessage(user.username, `https://www.google.com/maps?q=${coords.latitude},${coords.longitude}`));
+    // print something
+    console.log("location sent!")
     callback();
   });
 
@@ -73,6 +76,7 @@ io.on("connection", socket => {
         room: user.room,
         users: getUsersInRoom(user.room)
       });
+      console.log("disnect!")
     }
   });
 });
